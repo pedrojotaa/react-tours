@@ -4,8 +4,8 @@ import styles from './Tours.module.css'
 function Tours({ tours }) {
   return (
     <section>
-      <div>
-        <h2 className={styles.title}>our tours</h2>
+      <div className={styles.tours_container}>
+        <h2 className={styles.tours_title}>our tours</h2>
         <div>_____</div>
       </div>
       <div>

@@ -1,4 +1,12 @@
-.title{
+.tours_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem;
+}
+
+.tours_title{
   text-transform: capitalize;
   font-size: 2rem;
 }
