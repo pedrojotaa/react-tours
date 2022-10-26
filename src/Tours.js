@@ -1,7 +1,7 @@
 import Tour from "./Tour";
-import styles from './Tours.module.css'
+import styles from "./Tours.module.css";
 
-function Tours({ tours }) {
+function Tours({ tours, removeTour }) {
   return (
     <section>
       <div className={styles.tours_container}>
@@ -10,7 +10,7 @@ function Tours({ tours }) {
       </div>
       <div>
         {tours.map((tour) => {
-          return <Tour key={tour.id} {...tour} />;
+          return <Tour key={tour.id} {...tour} removeTour={removeTour} />;
         })}
       </div>
     </section>

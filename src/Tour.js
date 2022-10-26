@@ -2,7 +2,7 @@ import styles from "./Tour.module.css";
 
 import { useState } from "react";
 
-function Tour({ id, image, info, price, name }) {
+function Tour({ id, image, info, price, name, removeTour }) {
   const [readMore, setReadMore] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ function Tour({ id, image, info, price, name }) {
         <button onClick={() => setReadMore(!readMore)}>
           {readMore ? "show less" : "read more"}
         </button>
-        <button>not interested</button>
+        <button onClick={() => removeTour(id)}>not interested</button>
       </footer>
     </article>
   );

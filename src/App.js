@@ -11,7 +11,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
-  useEffect(() => {
+  const removeTour = (id) => {
+    const newTour = tours.filter((tour) => tour.id !== id);
+    setTours(newTour);
+  };
+
+  function fetchTours() {
     fetch(url, {
       method: "GET",
       headers: {
@@ -22,12 +27,15 @@ function App() {
       .then((data) => {
         setTours(data);
         setLoading(false);
-        console.log(data);
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
       });
+  }
+
+  useEffect(() => {
+    fetchTours();
   }, []);
 
   if (loading) {
@@ -37,9 +45,17 @@ function App() {
       </main>
     );
   }
+  if (tours.length === 0) {
+    return (
+      <main>
+        <h2>no tours left</h2>
+        <button onClick={fetchTours}>refresh</button>
+      </main>
+    );
+  }
   return (
     <main>
-      <Tours tours={tours} />
+      <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
 }
